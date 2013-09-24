@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+Egoactive Raspberry Pi Flask
+{% endblock %}
+
+{% block contentblock %}
+<div class="post">
+  	<h1>Klik Aan Klik Uit schakelaars</h1>
+	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
+{#	<p>Turn it on!</p>#}
+    {% for switch in switches %}
+{#        {{ switch }}#}
+        <div>
+            <label style="width:130px;">{{ switch.0 }}</label>
+            <button class="btn btn-primary" data-address="{{ switch.1 }}" data-state="on">Aan</button>
+            <button class="btn btn-primary" data-address="{{ switch.1 }}" data-state="off">Uit</button>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+    $(function(){
+    $('button').click(function() {
+        var thebutton = $(this).button();
+        var button_prev = thebutton.text();
+        thebutton.text('working');
+        var addr = $(this).attr('data-address');
+        var state = $(this).attr('data-state');
+        $.get('/lamp/'+addr+'/'+state+'/', function(data){
+            thebutton.text(button_prev);
+        });
+        });
+    });
+    </script>
+{% endblock %}
