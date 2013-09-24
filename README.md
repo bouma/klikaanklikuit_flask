@@ -28,6 +28,6 @@ Finally startup the app for testing:
 ```
    ./app.py
 ```
-and point your browser at http://<ip-in-your-settings>:5000/
+and point your browser at ```http://<ip-in-your-settings>:5000/```
 
 
