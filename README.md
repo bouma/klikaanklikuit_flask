@@ -6,7 +6,7 @@ smartphone/tablet control for your wireless 'klik aan klik uit ' light switches 
 Build a virtualenv
 ```
    virtualenv --no-site-packages venv
-'''
+```
 
 and activate it:
 ```
