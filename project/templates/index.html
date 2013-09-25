@@ -11,11 +11,17 @@ Egoactive Raspberry Pi Flask
     {% for switch in switches %}
 {#        {{ switch }}#}
         <div>
-            <label style="width:130px;">{{ switch.0 }}</label>
-            <button class="btn btn-primary" data-address="{{ switch.1 }}" data-state="on">Aan</button>
-            <button class="btn btn-primary" data-address="{{ switch.1 }}" data-state="off">Uit</button>
+            <label style="width:160px;">{{ switch.0 }}</label>
+            <button class="btn btn-primary" data-address="lamp/{{ switch.1 }}" data-state="on">Aan</button>
+            <button class="btn btn-primary" data-address="lamp/{{ switch.1 }}" data-state="off">Uit</button>
         </div>
     {% endfor %}
+    <br>
+    <div>
+        <label style="width:160px;">Allemaal</label>
+        <button class="btn btn-primary" data-address="all" data-state="on">Aan</button>
+        <button class="btn btn-primary" data-address="all" data-state="off">Uit</button>
+    </div>
 </div>
 {% endblock %}
 
@@ -28,7 +34,7 @@ Egoactive Raspberry Pi Flask
         thebutton.text('working');
         var addr = $(this).attr('data-address');
         var state = $(this).attr('data-state');
-        $.get('/lamp/'+addr+'/'+state+'/', function(data){
+        $.get('/'+addr+'/'+state+'/', function(data){
             thebutton.text(button_prev);
         });
         });

@@ -1,4 +1,4 @@
-HOST='192.168.6.226'
+HOST='192.168.6.229'
 CMND_FILE='/home/pi/extralibs/lights/kaku'
 DEBUG=True
 
