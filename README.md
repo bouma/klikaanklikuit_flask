@@ -3,8 +3,8 @@ klikaanklikuit_flask
 
 smartphone/tablet control for your wireless 'klik aan klik uit ' light switches using Flask running on Raspberry Pi
 
-**A pointer to setup-description of hardware and native packages on the Raspberry Pi will follow here shortly.**
-Meanwhile, this app can be tried out on your local machine.
+Find details about hardware and configuration in [this blog](http://blog.egoactive.com/klikaanklikuit-met-smartphone-via-raspberrypi.html)
+
 
 Build a virtualenv
 ```
