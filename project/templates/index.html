@@ -19,8 +19,8 @@ Egoactive Raspberry Pi Flask
     <br>
     <div>
         <label style="width:160px;">Allemaal</label>
-        <button class="btn btn-primary" data-address="all" data-state="on">Aan</button>
-        <button class="btn btn-primary" data-address="all" data-state="off">Uit</button>
+        <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="on">Aan</button>
+        <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="off">Uit</button>
     </div>
 </div>
 {% endblock %}
@@ -31,11 +31,15 @@ Egoactive Raspberry Pi Flask
     $('button').click(function() {
         var thebutton = $(this).button();
         var button_prev = thebutton.text();
-        thebutton.text('working');
+        thebutton.text('...');
         var addr = $(this).attr('data-address');
         var state = $(this).attr('data-state');
-        $.get('/'+addr+'/'+state+'/', function(data){
-            thebutton.text(button_prev);
+        var urls = addr.split(',');
+        $.each( urls, function( index, value ){
+            console.log(value);
+            $.get('/'+value+'/'+state+'/', function(data){
+                thebutton.text(button_prev);
+            });
         });
         });
     });

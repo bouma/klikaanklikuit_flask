@@ -14,8 +14,9 @@ def index():
     '''
     Knoppen scherm
     '''
+    urls = ",".join([ "lamp/%s" % switch[1] for switch in app.config['SWITCHES'] ])
     ctx = {'now': datetime.now()}
-    return render_template('index.html', switches=app.config['SWITCHES'], ctx=ctx)
+    return render_template('index.html', switches=app.config['SWITCHES'], all_urls=urls, ctx=ctx)
 
 
 @app.route('/lamp/<address>/<aan_uit>/')
@@ -25,7 +26,7 @@ def lamp_aanuit(address, aan_uit='on'):
         app.logger.warn("Illegal attempt to switch %s" % address)
         return "ERROR"
     cmnd_file = app.config['CMND_FILE']
-    if os.path.isfile(cmnd_file):
+    if not app.config['DRY_RUN'] and os.path.isfile(cmnd_file):
         cmnd = "%s %s %s" % (cmnd_file, address, aan_uit)
         app.logger.debug(cmnd)
         os.system(cmnd)

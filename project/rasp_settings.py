@@ -1,5 +1,5 @@
 HOST='192.168.6.203'
-IS_RASPBERRY=False
+DRY_RUN=True
 DEBUG=True
 
 SWITCHES = (('Links', 'G 12'),
