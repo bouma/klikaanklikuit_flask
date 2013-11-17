@@ -7,7 +7,6 @@ Egoactive Raspberry Pi Flask
 <div class="post">
   	<h1>Klik Aan Klik Uit schakelaars</h1>
 	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
-{#	<p>Turn it on!</p>#}
     {% for switch in switches %}
 {#        {{ switch }}#}
         <div>
@@ -18,9 +17,13 @@ Egoactive Raspberry Pi Flask
     {% endfor %}
     <br>
     <div>
-        <label style="width:160px;">Allemaal</label>
+{#	 <label style="width:160px;">Allemaal (parallel doesn't work)</label>
         <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="on">Aan</button>
         <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="off">Uit</button>
+#}
+        <label style="width:160px;">Allemaal</label>
+        <button class="btn btn-primary" data-address="all" data-state="on">Aan</button>
+        <button class="btn btn-primary" data-address="all" data-state="off">Uit</button>
     </div>
 </div>
 {% endblock %}
