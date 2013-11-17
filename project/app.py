@@ -36,10 +36,11 @@ def lamp_aanuit(address, aan_uit='on'):
     return "lamp is nu: %s" % aan_uit
 
 
-@app.route('/all/<aan_uit>/')
-def all_aanuit(aan_uit='on'):
+@app.route('/<subset>/<aan_uit>/')
+def all_aanuit(subset=None, aan_uit='on'):
     cmnd_file = app.config['CMND_FILE']
-    for name, switch_addr in app.config['SWITCHES']:
+    for index in app.config[subset.upper()]:
+    	name, switch_addr = app.config['SWITCHES'][index]
         cmnd = "%s %s %s" % (cmnd_file, switch_addr, aan_uit)
         if os.path.isfile(cmnd_file):
             os.system(cmnd)
