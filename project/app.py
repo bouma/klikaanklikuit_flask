@@ -26,11 +26,12 @@ def lamp_aanuit(address, aan_uit='on'):
         app.logger.warn("Illegal attempt to switch %s" % address)
         return "ERROR"
     cmnd_file = app.config['CMND_FILE']
+    cmnd = "%s %s %s" % (cmnd_file, address, aan_uit)
     if not app.config['DRY_RUN'] and os.path.isfile(cmnd_file):
-        cmnd = "%s %s %s" % (cmnd_file, address, aan_uit)
         app.logger.debug(cmnd)
         os.system(cmnd)
     else:
+        app.logger.debug("dry-running %s" % cmnd)
         time.sleep(2)
     app.logger.info("switched %s %s" % (address, aan_uit))
     return "lamp is nu: %s" % aan_uit
@@ -40,10 +41,12 @@ def lamp_aanuit(address, aan_uit='on'):
 def all_aanuit(subset=None, aan_uit='on'):
     cmnd_file = app.config['CMND_FILE']
     for index in app.config[subset.upper()]:
-    	name, switch_addr = app.config['SWITCHES'][index]
+        name, switch_addr = app.config['SWITCHES'][index]
         cmnd = "%s %s %s" % (cmnd_file, switch_addr, aan_uit)
-        if os.path.isfile(cmnd_file):
+        if not app.config['DRY_RUN'] and os.path.isfile(cmnd_file):
             os.system(cmnd)
+        else:
+            app.logger.debug("dry-running %s" % cmnd)
         app.logger.info("switched %s %s" % (switch_addr, aan_uit))
     return "switched all %s" % aan_uit
 
