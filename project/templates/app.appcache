@@ -1,0 +1,13 @@
+CACHE MANIFEST
+
+# This is a comment
+
+CACHE:
+/
+
+FALLBACK:
+#/ /static/offline.html
+
+NETWORK:
+*
+http://*

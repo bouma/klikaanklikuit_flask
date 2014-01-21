@@ -1,6 +1,8 @@
 #!../venv/bin/python
 import os
 from flask import Flask
+from flask import make_response
+from flask import redirect, url_for
 from flask import render_template
 import time
 from datetime import datetime
@@ -47,6 +49,15 @@ def all_aanuit(subset=None, aan_uit='on'):
         app.logger.info("switched %s %s" % (switch_addr, aan_uit))
     return "switched all %s" % aan_uit
 
+@app.route("/app.appcache")
+def manifest():
+    res = make_response(render_template('app.appcache'), 200)
+    res.headers["Content-Type"] = "text/cache-manifest"
+    return res
+
+@app.route("/apple-touch-icon-120x120-precomposed.png")
+def apple_icon():
+    return redirect(url_for('static', filename='img/apple-touch-icon-120x120-precomposed.png'), code=301)
 
 if __name__ == '__main__':
     app.run(debug = app.debug, host=app.config['HOST'])
