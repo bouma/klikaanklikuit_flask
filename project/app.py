@@ -4,6 +4,8 @@ from flask import Flask
 from flask import make_response
 from flask import redirect, url_for
 from flask import render_template
+import json
+import requests
 import time
 from datetime import datetime
 
@@ -51,6 +53,42 @@ def all_aanuit(subset=None, aan_uit='on'):
             app.logger.debug("dry-running %s" % cmnd)
         app.logger.info("switched %s %s" % (switch_addr, aan_uit))
     return "switched all %s" % aan_uit
+
+@app.route('/servo/<graden>/')
+def set_servo(graden=None):
+    device_id = app.config['SPARK_DEVICE_ID']
+    access_token = app.config['SPARK_ACCESS_TOKEN']
+    url = "https://api.spark.io/v1/devices/" +device_id + "/setpos/"
+
+    # eerst helemaal naar ...
+    data = json.dumps({'params': 180, 'access_token': access_token})
+    r = requests.post(url, data)
+    # waarde instellen
+    data = json.dumps({'params': graden, 'access_token': access_token})
+    r = requests.post(url, data)
+    # en naar middenstand
+    data = json.dumps({'params': 90, 'access_token': access_token})
+    r = requests.post(url, data)
+
+    return "Done"
+
+@app.route('/servo/')
+def get_servo():
+    device_id = app.config['SPARK_DEVICE_ID']
+    access_token = app.config['SPARK_ACCESS_TOKEN']
+    url = "https://api.spark.io/v1/devices/" +device_id +\
+          "/getpos/?access_token=" + access_token
+    r = requests.get(url)
+    return r.text
+
+@app.route('/temp/')
+def get_temperature():
+    device_id = app.config['SPARK_DEVICE_ID']
+    access_token = app.config['SPARK_ACCESS_TOKEN']
+    url = "https://api.spark.io/v1/devices/" +device_id +\
+          "/temperature/?access_token=" + access_token
+    r = requests.get(url)
+    return r.text
 
 @app.route("/app.appcache")
 def manifest():

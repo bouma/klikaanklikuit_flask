@@ -5,14 +5,27 @@ Egoactive Raspberry Pi Flask
 
 {% block contentblock %}
 <div class="post">
-  	<h1>Klik Aan Klik Uit schakelaars</h1>
+  	<h3>Klik Aan Klik Uit schakelaars</h3>
 	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
+    <div>
+        <label style="width:160px;">Temp meting</label>
+        <span id="curTemp">-</span> (<span id="curPos"></span>)
+    </div>
+    <div>
+        <button class="btn btn-primary temp" data-value="180">15</button>
+        <button class="btn btn-primary temp" data-value="150">17</button>
+        <button class="btn btn-primary temp" data-value="45">19</button>
+        <button class="btn btn-primary temp" data-value="30">19.5</button>
+        <button class="btn btn-primary temp" data-value="15">20</button>
+        <button class="btn btn-primary temp" data-value="0">20.5</button>
+    </div>
+    <br>
     {% for switch in switches %}
 {#        {{ switch }}#}
         <div>
             <label style="width:160px;">{{ switch.0 }}</label>
-            <button class="btn btn-primary" data-address="lamp/{{ switch.1 }}" data-state="on">Aan</button>
-            <button class="btn btn-primary" data-address="lamp/{{ switch.1 }}" data-state="off">Uit</button>
+            <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="on">Aan</button>
+            <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="off">Uit</button>
         </div>
     {% endfor %}
     <br>
@@ -22,13 +35,13 @@ Egoactive Raspberry Pi Flask
         <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="off">Uit</button>
 #}
         <label style="width:160px;">Alle lampen</label>
-        <button class="btn btn-primary" data-address="lightsonly" data-state="on">Aan</button>
-        <button class="btn btn-primary" data-address="lightsonly" data-state="off">Uit</button>
+        <button class="btn btn-primary kika" data-address="lightsonly" data-state="on">Aan</button>
+        <button class="btn btn-primary kika" data-address="lightsonly" data-state="off">Uit</button>
     </div>
     <div>
         <label style="width:160px;">Alle schakelaars</label>
-        <button class="btn btn-primary" data-address="all" data-state="on">Aan</button>
-        <button class="btn btn-primary" data-address="all" data-state="off">Uit</button>
+        <button class="btn btn-primary kika" data-address="all" data-state="on">Aan</button>
+        <button class="btn btn-primary kika" data-address="all" data-state="off">Uit</button>
     </div>
 </div>
 {% endblock %}
@@ -36,20 +49,50 @@ Egoactive Raspberry Pi Flask
 {% block extra_js %}
     <script>
     $(function(){
-    $('button').click(function() {
-        var thebutton = $(this).button();
-        var button_prev = thebutton.text();
-        thebutton.text('...');
-        var addr = $(this).attr('data-address');
-        var state = $(this).attr('data-state');
-        var urls = addr.split(',');
-        $.each( urls, function( index, value ){
-            console.log(value);
-            $.get('/'+value+'/'+state+'/', function(data){
-                thebutton.text(button_prev);
+        $('button.kika').click(function() {
+            var thebutton = $(this).button();
+            var button_prev = thebutton.text();
+            thebutton.text('...');
+            var addr = $(this).attr('data-address');
+            var state = $(this).attr('data-state');
+            var urls = addr.split(',');
+            $.each( urls, function( index, value ){
+                console.log(value);
+                $.get('/'+value+'/'+state+'/', function(data){
+                    thebutton.text(button_prev);
+                });
             });
         });
+
+        $('button.temp').click(function() {
+            var thebutton = $(this).button();
+            var button_prev = thebutton.text();
+            thebutton.text('...');
+            var newValue = $(this).attr('data-value');
+            // waarde instellen
+            var requestURL = '/servo/' + newValue;
+            $.get( requestURL, function(data){
+                thebutton.text(data);
+                setTimeout(function(){
+                    // na 1 sec. oorspronkelijke label terug op button
+                    thebutton.text(button_prev);
+                }, 1000);
+            });
         });
     });
+
+    window.setInterval(function() {
+        requestURL = "/servo/";
+        $.getJSON(requestURL, function(json) {
+                 document.getElementById("curPos").innerHTML = json.result + "&deg;";
+                 document.getElementById("curPos").style.fontSize = "28px";
+                 });
+        requestURL = "/temp/";
+        $.getJSON(requestURL, function(json) {
+                 document.getElementById("curTemp").innerHTML = json.result + "&deg;";
+                 document.getElementById("curTemp").style.fontSize = "28px";
+                 });
+    }, 2000);
+
     </script>
 {% endblock %}
