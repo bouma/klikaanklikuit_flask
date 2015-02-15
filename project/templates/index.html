@@ -13,7 +13,6 @@ Egoactive Raspberry Pi Flask
     </div>
     <div>
         <button class="btn btn-primary temp" data-value="180">15</button>
-        <button class="btn btn-primary temp" data-value="150">17</button>
         <button class="btn btn-primary temp" data-value="45">19</button>
         <button class="btn btn-primary temp" data-value="30">19.5</button>
         <button class="btn btn-primary temp" data-value="15">20</button>
@@ -85,12 +84,12 @@ Egoactive Raspberry Pi Flask
         requestURL = "/servo/";
         $.getJSON(requestURL, function(json) {
                  document.getElementById("curPos").innerHTML = json.result + "&deg;";
-                 document.getElementById("curPos").style.fontSize = "28px";
+                 document.getElementById("curPos").style.fontSize = "20px";
                  });
         requestURL = "/temp/";
         $.getJSON(requestURL, function(json) {
                  document.getElementById("curTemp").innerHTML = json.result + "&deg;";
-                 document.getElementById("curTemp").style.fontSize = "28px";
+                 document.getElementById("curTemp").style.fontSize = "20px";
                  });
     }, 2000);
 
