@@ -69,7 +69,7 @@ Egoactive Raspberry Pi Flask
             thebutton.text('...');
             var newValue = $(this).attr('data-value');
             // waarde instellen
-            var requestURL = '/servo/' + newValue;
+            var requestURL = '/servo/' + newValue + '/';
             $.get( requestURL, function(data){
                 thebutton.text(data);
                 setTimeout(function(){
@@ -91,7 +91,7 @@ Egoactive Raspberry Pi Flask
                  document.getElementById("curTemp").innerHTML = json.result + "&deg;";
                  document.getElementById("curTemp").style.fontSize = "20px";
                  });
-    }, 2000);
+    }, 5000);
 
     </script>
 {% endblock %}
