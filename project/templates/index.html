@@ -9,7 +9,7 @@ Egoactive Raspberry Pi Flask
 	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
     <div>
         <label style="width:160px;">Temp meting</label>
-        <span id="curTemp">-</span> (<span id="curPos"></span>)
+        <span id="curTemp">-</span> 
     </div>
     <div>
         <button class="btn btn-primary temp" data-value="180">15</button>
@@ -81,11 +81,6 @@ Egoactive Raspberry Pi Flask
     });
 
     window.setInterval(function() {
-        requestURL = "/servo/";
-        $.getJSON(requestURL, function(json) {
-                 document.getElementById("curPos").innerHTML = json.result + "&deg;";
-                 document.getElementById("curPos").style.fontSize = "20px";
-                 });
         requestURL = "/temp/";
         $.getJSON(requestURL, function(json) {
                  document.getElementById("curTemp").innerHTML = json.result + "&deg;";
