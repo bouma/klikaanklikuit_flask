@@ -58,6 +58,11 @@ def all_aanuit(subset=None, aan_uit='on'):
 def set_servo(graden=None):
     device_id = app.config['SPARK_DEVICE_ID']
     access_token = app.config['SPARK_ACCESS_TOKEN']
+
+    power_url = "https://api.spark.io/v1/devices/" +device_id + "/servopower/"
+    data = {'params': 'on', 'access_token': access_token}
+    r = requests.post(power_url, data)
+
     url = "https://api.spark.io/v1/devices/" +device_id + "/setpos/"
 
     # eerst helemaal naar ...
@@ -70,6 +75,8 @@ def set_servo(graden=None):
     data = {'params': '90', 'access_token': access_token}
     r = requests.post(url, data)
 
+    data = {'params': 'off', 'access_token': access_token}
+    r = requests.post(power_url, data)
     return "Done"
 
 @app.route('/servo/')

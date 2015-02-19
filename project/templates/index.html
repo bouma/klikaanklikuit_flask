@@ -81,12 +81,19 @@ Egoactive Raspberry Pi Flask
     });
 
     window.setInterval(function() {
+        fetch_temp();
+    }, 5000);
+
+    fetch_temp = function(){
         requestURL = "/temp/";
         $.getJSON(requestURL, function(json) {
                  document.getElementById("curTemp").innerHTML = json.result + "&deg;";
                  document.getElementById("curTemp").style.fontSize = "20px";
                  });
-    }, 5000);
+    }
 
+    $(document).ready(function() {
+        fetch_temp();
+    });
     </script>
 {% endblock %}
