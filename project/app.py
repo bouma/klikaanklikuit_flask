@@ -66,7 +66,7 @@ def set_servo(graden=None):
     url = "https://api.spark.io/v1/devices/" +device_id + "/setpos/"
 
     # eerst helemaal naar ...
-    data = {'params': '180', 'access_token': access_token}
+    data = {'params': '0', 'access_token': access_token}
     r = requests.post(url, data)
     # waarde instellen
     data = {'params': graden, 'access_token': access_token}
