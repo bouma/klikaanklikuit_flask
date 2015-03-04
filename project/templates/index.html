@@ -5,16 +5,22 @@ Egoactive Raspberry Pi Flask
 
 {% block contentblock %}
 <div class="post">
-  	<h3>Klik Aan Klik Uit schakelaars</h3>
+  	<h3>HuBo Home</h3>
 	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
     <div>
-        <label style="width:160px;">Temp meting</label>
+        <label style="width:160px;">Actuele temp.</label>
         <span id="curTemp">-</span> 
     </div>
-    <div>
+    <div style="padding-bottom:5px;">
+        <label style="width:60px;">laag</label>
         <button class="btn btn-primary temp" data-value="0">15</button>
-        <button class="btn btn-primary temp" data-value="125">17</button>
-        <button class="btn btn-primary temp" data-value="140">18</button>
+        <button class="btn btn-primary temp" data-value="110">16</button>
+        <button class="btn btn-primary temp" data-value="120">17</button>
+        <button class="btn btn-primary temp" data-value="130">18</button>
+    </div>
+    <div>
+        <label style="width:60px;">hoog</label>
+        <button class="btn btn-primary temp" data-value="140">19</button>
         <button class="btn btn-primary temp" data-value="150">19.5</button>
         <button class="btn btn-primary temp" data-value="165">20</button>
         <button class="btn btn-primary temp" data-value="175">20.5</button>

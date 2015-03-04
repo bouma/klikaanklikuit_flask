@@ -1,7 +1,7 @@
 CACHE MANIFEST
-# version 0.3
-
-# This is a comment
+# version 0.3.6
+# 
+# https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
 
 CACHE:
 /
@@ -10,5 +10,5 @@ FALLBACK:
 #/ /static/offline.html
 
 NETWORK:
+/app.appcache
 *
-http://*
