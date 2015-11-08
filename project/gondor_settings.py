@@ -12,5 +12,5 @@ SWITCHES = [('Linker lamp', 'G 12'),
 LIGHTSONLY = [0,2,3]
 ALL = range(0, len(SWITCHES))
 
-SPARK_DEVICE_ID = "48ff70065067555057352287"
-SPARK_ACCESS_TOKEN = "ed33d6d63db5b2bb1f11d11ec767b5ccebf6ac18"
+SPARK_DEVICE_ID = "<my own sparticle-core id>"
+SPARK_ACCESS_TOKEN = "<the secret access token>"

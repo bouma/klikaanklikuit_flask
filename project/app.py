@@ -79,23 +79,30 @@ def set_servo(graden=None):
     r = requests.post(power_url, data)
     return "Done"
 
-@app.route('/servo/')
-def get_servo():
+
+def get_from_spark(remote_function_name):
     device_id = app.config['SPARK_DEVICE_ID']
     access_token = app.config['SPARK_ACCESS_TOKEN']
     url = "https://api.spark.io/v1/devices/" +device_id +\
-          "/getpos/?access_token=" + access_token
+          "/" + remote_function_name + "/?access_token=" + access_token
     r = requests.get(url)
     return r.text
 
+@app.route('/servo/')
+def get_servo():
+    return get_from_spark('getpos')
+
 @app.route('/temp/')
 def get_temperature():
-    device_id = app.config['SPARK_DEVICE_ID']
-    access_token = app.config['SPARK_ACCESS_TOKEN']
-    url = "https://api.spark.io/v1/devices/" +device_id +\
-          "/temperature/?access_token=" + access_token
-    r = requests.get(url)
-    return r.text
+    return get_from_spark('temperature')
+
+@app.route('/getpos_actual/')
+def getpos_actual():
+    return get_from_spark('getpos_act')
+
+@app.route('/getpos_set/')
+def getpos_set():
+    return get_from_spark('getpos_set')
 
 @app.route("/app.appcache")
 def manifest():

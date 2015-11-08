@@ -12,11 +12,21 @@ Egoactive Raspberry Pi Flask
         <span id="curTemp">-</span> 
     </div>
     <div>
-        <button class="btn btn-primary temp" data-value="0">15</button>
-        <button class="btn btn-primary temp" data-value="135">19</button>
+        <label style="width:160px;">Thermostaat stand</label>
+        <span id="curPotPos">-</span><span id="curPotPosRaw"></span>
+    </div>
+    <div>
+        <button class="btn btn-primary temp" data-value="0">14</button>
+        <button class="btn btn-primary temp" data-value="120">15</button>
+        <!-- button class="btn btn-primary temp" data-value="127">16</button -->
+        <!-- button class="btn btn-primary temp" data-value="135">17</button -->
+        <button class="btn btn-primary temp" data-value="140">18</button>
+        <button class="btn btn-primary temp" data-value="155">19</button>
         <button class="btn btn-primary temp" data-value="150">19.5</button>
         <button class="btn btn-primary temp" data-value="165">20</button>
-        <button class="btn btn-primary temp" data-value="180">20.5</button>
+        <button class="btn btn-primary temp" data-value="169">20.5</button>
+        <button class="btn btn-primary temp" data-value="173">21</button>
+        <button class="btn btn-primary temp" data-value="180">21.5</button>
     </div>
     <br>
     {% for switch in switches %}
@@ -89,6 +99,14 @@ Egoactive Raspberry Pi Flask
         $.getJSON(requestURL, function(json) {
                  document.getElementById("curTemp").innerHTML = json.result + "&deg;";
                  document.getElementById("curTemp").style.fontSize = "20px";
+                 });
+        requestURL = "/getpos_actual/";
+        $.getJSON(requestURL, function(json) {
+            var temp_act = Math.round( (1.0 + 0.008*json.result) * 10 ) / 10;
+                 document.getElementById("curPotPos").innerHTML = temp_act + "&deg;";
+                 document.getElementById("curPotPos").style.fontSize = "20px";
+                 document.getElementById("curPotPosRaw").innerHTML = "(" + json.result + ")";
+                 document.getElementById("curPotPosRaw").style.fontSize = "10px";
                  });
     }
 
