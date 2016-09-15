@@ -1,0 +1,340 @@
+	body {
+		color: #a8a8a8;
+		background-color:#000;
+		font: 12px 'Lucida Grande', Geneva, Arial, Helvetica,Verdana sans-serif;
+		margin:0px;
+	}
+	
+	p strong{
+		color:#fff;
+	}
+	h1 {
+		color: #007DD1;
+		font: 20px 'Lucida Grande', Geneva, Arial, Helvetica,Verdana sans-serif;
+		margin-top: 0px;
+		margin-bottom: 21px;
+		font-weight:bold;
+	}
+	
+	h2 {
+		color: #ffffff;
+		font: 15px bold Lucida Grande, Geneva, Arial, Helvetica,Verdana sans-serif ;
+		font-weight: bold;
+		margin-top: 0px;
+		margin-bottom: 21px;
+	}
+	
+	img.left {float: left; margin: 2px 6px 2px 0px; border: 0;}
+	
+	.clear {clear:both;display:block;width:100%;}
+	
+	.highlight {color: #ff9600;}
+	
+	/* links */
+	#detailleft a:hover {
+		background-color:#ff9600;
+		color: black;
+		text-decoration: none;
+	}
+	a:visited {
+		color: #ff9600;
+		text-decoration: underline;
+		font-weight: bold;
+	}
+
+	a:link {
+		color: #ff9600;
+		text-decoration: underline;
+		font-weight: bold;
+	}
+	
+	
+	
+	#main {
+		width: 790px;
+		margin:auto;	
+	}
+	#logo{
+		float:left;
+	}
+	
+	#navcontainer {
+		position: relative;top: 10px;left: 0px;
+		height: 80px;
+	}
+	 
+	
+	#homepagecontainer{
+		background-image: url('../gfx/egoactive_homepage_balk.gif');
+		background-repeat:no-repeat;
+		height: 326px;
+		width:790px;
+	}
+	
+	/* MODIFIED BY markjan@ziep.nl on 2006/03/31*/
+	div#subnavcontainer { text-align: left; height: 30px; }
+	
+	div#subnavcontainer a {	color: #007DD1;	background: url(../gfx/arrow_black.gif) transparent 6px 5px no-repeat;	padding: 2px 0px 15px 20px;}	
+	div#left { float: left; }
+	div#middle { float: left; margin: 465px 0px 0px 2px;}
+	div#right { float: left; margin: 220px 0 0 -10px;}
+	
+	#detailpagecontainer{
+		padding: 80px 0 0 30px;
+		background: url(../gfx/egoactive_detailpage_balk.gif) no-repeat top left;
+		/* uit 20060504 
+		Geen functie
+		height: 426px; 
+		*/
+	}
+	
+	div.block {		margin-bottom : 30px;	}
+	
+	/* end markjan@ziep.nl on 2006/03/31*/
+	/* nav box */
+	/* -------------------------------------------------------------------------- */
+	
+	#nav{
+		float:right; 
+		padding-right:30px;
+		padding-top:22px;
+		/*word-spacing:10px; */
+	}
+	
+	#nav a:link {color: #fff;}
+	#nav a:visited {color: #fff;}
+	#nav a:hover {color: #fff;}
+	#nav a:active {color: #f60;}
+
+	
+	/* homepage box */
+	/* -------------------------------------------------------------------------- */
+	div#filler1 { height: 10px; }
+	div#boxcontainer{	
+		position: relative;
+		margin: 200px 0 0 30px;
+		/*width:314px;height:234px;*/ /* twee teaser kolommen */
+		width:466px;height:234px;
+		padding-bottom: 2px;
+	}
+	* html div#boxcontainer{
+		margin-top: 195px;
+	}
+	#box1container, #box2container, #box3container {
+	float: left; width: 152px;height:288px; min-height:288px;padding-left: 2px; 
+	border-left: #04428b 1px dashed; padding-bottom: 2px; background-color: #000000; 	border-bottom: #04428b 1px dashed; 
+color: #fff;	
+}
+	
+	#box3container{ border-right: #04428b 1px dashed; }
+	
+	.boxtop{}
+	/*
+	.boxmiddle{
+		height:28px;
+		display:inline-block;
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gfx/teaser_block_diag_blue.png', sizingMethod='no-scale');
+	}
+	*/
+	/*
+	* html img.pngHackIE {
+		display: none;
+	}
+	*/
+	.boxtext,.boxbottom{
+		width: 130px;
+		padding:10px 12px 0 12px;
+	}
+	
+	div.boxlower {
+		position: absolute;
+		background: url('../gfx/box2_bg.gif') 0px 29px  no-repeat;
+		margin-bottom: 20px;
+		overflow: hidden;
+		height:	288px;
+	}
+	/*
+	#box1container .boxlower{ top: 0px; height:	288px;}
+	#box2container .boxlower{top: 0px; height:	288px;}
+	#box3container .boxlower{top: 0px; height:	288px;}	
+	
+	* html div.boxtext  {	
+		overflow: hidden;
+		height:	148px;
+		filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gfx/teaser_block_blue_long.png', sizingMethod='no-scale');
+	}
+	*/
+	.boxbottom a{
+		color: #4A9DEF;
+		background: url(../gfx/arrow_blue.jpg) transparent 6px 7px no-repeat;
+		padding: 2px 0px 5px 20px;
+		display: block;
+	}
+	/*
+	div.sale a {		display: block;		background-image: url(../gfx/sale.gif);		width: 84px;		height: 44px;		color: #FFFFFF;		font-weight: bold;		position: absolute;		top: 555px;		left: 600px;		padding: 40px 10px 20px 10px;		text-align:center;		vertical-align: middle;	}
+	div.sale a:link {
+		color: #FFFFFF;
+	}
+	div.sale a:hover {
+		color: #FFFFFF;
+	}
+	*/
+	/* homepage intro */
+	/* -------------------------------------------------------------------------- */
+	
+	
+	#introcontainer{
+		float: left;
+		height:300px;
+		width:250px;
+	}
+	#introcontainer #subnav a{
+		color: #007DD1;
+		background: url(../gfx/arrow_black.jpg) transparent 6px 7px no-repeat;
+		padding: 2px 0px 0px 20px;
+	}
+	
+
+	/* detailpage left */
+	/* -------------------------------------------------------------------------- */
+	/* MODIFIED BY markjan@ziep.nl on 2006/03/31*/
+	#detailcontainer{
+	}
+	#detailtop{
+		width:760px;
+		float: left;
+		padding: 0px 0px 10px 0px;
+	}
+	#detailfull{
+		width:720px;
+		float: left;
+	}
+	
+	#detailfull p{
+		width:720px;
+		clear: left;
+	}
+	
+	#detailleft{
+		width:440px;
+		float: left;
+	}
+	#detailright{
+		width:310px;
+		float: left;
+		margin: 0 0 0 10px;
+	}
+	/*
+	.col{
+		width:380px;
+		margin: 0 0 10px 0 ;
+		clear: left;
+	}	
+	.col1{
+		float: left;
+		width:170px;
+		margin: 0 10px 0 0;
+	}
+	.col2{
+		float: left;
+		width:170px;
+		margin: 0;
+	}
+	*/
+	/* end modified by markjan@ziep.nl on 2006/03/31 */
+	/* form */
+	/* -------------------------------------------------------------------------- */
+	.form table{
+		width:300px;
+		padding:2px;
+	}
+	.form td.label{
+		width:200px;
+		font-weight:bold;
+	}
+	
+	input.text, select {
+		background-color:	#333333;
+		width: 185px;
+		border: 1px solid #ffffff;
+		color: #FFFFFF;
+		padding: 1px 2px 1px 2px;
+	}
+	input.radio {
+		
+	}
+	input.checkbox {  ; }
+	input.button {  }
+	
+	table.overview { width: 100%; margin: 0; padding: 0; }
+	
+	table.overview thead tr th,
+	table.overview tbody tr td {
+		overflow: hidden;
+		padding: 4px 4px;
+		color: #FFFFFF;
+		font-size: 12px;
+		font-weight: normal;
+		margin: 0px;
+		text-align: left;
+	}
+	table.overview thead tr th {
+		height: 22px;
+		background-image: url(../gfx/th_bg.gif);
+		border-top: 1px solid #CCCCCC;
+		border-right: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+	}
+	table.overview tbody tr td {
+		background-color: #333333;
+		border-bottom: 1px solid #666666;
+		border-right: 1px solid #666666;
+	}
+	
+	table.overview thead tr th.first {
+		border-left: 1px solid #CCCCCC;
+	}	
+	* html table.overview thead tr th {
+		height: 16px;
+
+	}
+	
+	table.overview tbody tr td.first {
+		border-left: 1px solid #666666;
+	}	
+	
+/* SITEBAR  */	
+	
+#sidebar {float: right; width: 255px; font: 12px 'Lucida Grande', Geneva, Verdana, Arial, sans-serif;}
+/*
+#sidebar h2 {font-size: 12px; margin: 0;color: #333;}
+#sidebar h3 {font-size: 11px; margin: 0;}
+#sidebar h4 {font-size: 10px; margin: 0;}
+
+img.right {float: right; margin: 2px 0 5px 10px; border: 0;}
+*/
+
+/* SIDEBAR */
+#sidebar { width:255px; line-height:1.5; margin-top:0px; color:#fff; }
+#sidebar div { background:url(../gfx/sidebar-background-top.gif) no-repeat; padding:14px 0 0 0; margin-bottom:4px;}
+#sidebar div ul, #sidebar div ul.square { padding-left:35px; }
+
+#sidebar div * { padding-left:18px; padding-right:18px; }
+#sidebar div * * { padding-left:0px; padding-right:0px; }
+/*
+#sidebar div ol { padding-left:20px; }
+#sidebar div h3 { margin-bottom:8px; text-shadow:2px 2px #fff; }
+#sidebar div h3.subhead { margin-bottom:0px; }
+#sidebar div h2 { margin-bottom:0px; text-shadow:2px 2px #fff; }
+#sidebar div img.right { margin-left:6px; }
+#sidebar div img.left { margin-right:6px; }
+*/
+#sidebar div .last { background:url(../gfx/sidebar-background-bottom.gif) 0 100% no-repeat; margin:0; padding-bottom:26px; padding-left:18px; padding-right:18px;  }
+/*
+#sidebar div div { background-image:none; }
+*/
+/* IE IMAGE FIXES */
+/*
+* html #sidebar div img.right { padding:0; margin-right:18px;}
+* html #bgbottom { padding-top:10px; }
+*/

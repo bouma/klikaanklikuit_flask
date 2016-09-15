@@ -85,7 +85,7 @@ def get_from_spark(remote_function_name):
     access_token = app.config['SPARK_ACCESS_TOKEN']
     url = "https://api.spark.io/v1/devices/" +device_id +\
           "/" + remote_function_name + "/?access_token=" + access_token
-    r = requests.get(url)
+    r = requests.get(url, timeout=5)
     return r.text
 
 @app.route('/servo/')
