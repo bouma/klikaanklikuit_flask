@@ -1,12 +1,14 @@
 HOST='192.168.1.61'
-CMND_FILE='/home/pi/extralibs/lights/kaku'
+CMND_FILE='/usr/local/bin/pilight-control'
 DRY_RUN=False
 DEBUG=True
 
-SWITCHES = (('Linker lamp', 'G 12'),
-            ('TV en Ziggo', 'G 13'),
-            ('Boekenkast licht', 'G 14'),
-            ('Hanglamp', 'G 15'))
+SWITCHES = (('Linker lamp', '-d LinksBoven -s'),
+            ('TV en Horizon', '-d TVHorizonBoven -s'),
+            ('Boekenkast licht', '-d BoekenkastBoven -s'),
+            ('Hanglamp Boven', '-d HanglampBoven -s'),
+            ('TV Beneden', '-d TVBeneden -s'),
+            ('Lotek Beneden', '-d BankBeneden -s'))
 
 # switch subsets (point to the indexes of the SWITCHES array)
 LIGHTSONLY = [0,2,3]
