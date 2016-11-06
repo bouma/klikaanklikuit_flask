@@ -5,59 +5,76 @@ Studio Reactor Raspberry Pi Flask
 
 {% block contentblock %}
 <div class="post">
-  	<h3>HuBo Home</h3>
-	<span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
-    <div>
-        <label style="width:160px;">Actuele temp.</label>
-        <span id="curTemp">-</span> 
+  	<h2>HuBo Home</h2>
+    <div class="groep">
+        <span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
     </div>
-    <div>
-        <label style="width:160px;">Thermostaat stand</label>
-        <span id="curPotPos">-</span><span id="curPotPosRaw"></span>
-    </div>
-    <div style="padding-bottom:5px;">
-        <label style="width:60px;">laag</label>
-        <!-- button class="btn btn-primary temp" data-value="0">14</button -->
-        <button class="btn btn-primary temp" data-value="125">15</button>
-        <button class="btn btn-primary temp" data-value="132">16</button>
-        <!-- button class="btn btn-primary temp" data-value="135">17</button -->
-    </div>
-    <div>
-        <label style="width:60px;">middel</label>
-        <button class="btn btn-primary temp" data-value="140">18</button>
-        <button class="btn btn-primary temp" data-value="155">19</button>
-        <button class="btn btn-primary temp" data-value="160">19.5</button>
-    </div>
-    <div>
-        <label style="width:60px;">hoog</label>
-        <button class="btn btn-primary temp" data-value="165">20</button>
-        <button class="btn btn-primary temp" data-value="169">20.5</button>
-        <button class="btn btn-primary temp" data-value="173">21</button>
-        <button class="btn btn-primary temp" data-value="180">21.5</button>
-    </div>
-    <br>
-    {% for switch in switches %}
-{#        {{ switch }}#}
+    <div class="groep">
         <div>
-            <label style="width:160px;">{{ switch.0 }}</label>
-            <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="on">Aan</button>
-            <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="off">Uit</button>
+            <label style="width:160px;">Actuele temp.</label>
+            <span id="curTemp">-</span>
         </div>
-    {% endfor %}
-    <br>
-    <div>
-{#	 <label style="width:160px;">Allemaal (parallel doesn't work)</label>
-        <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="on">Aan</button>
-        <button class="btn btn-primary" data-address="{{ all_urls }}" data-state="off">Uit</button>
-#}
-        <label style="width:160px;">Alle lampen</label>
-        <button class="btn btn-primary kika" data-address="lightsonly" data-state="on">Aan</button>
-        <button class="btn btn-primary kika" data-address="lightsonly" data-state="off">Uit</button>
+        <div>
+            <label style="width:160px;">Thermostaat stand</label>
+            <span id="curPotPos">-</span><span id="curPotPosRaw"></span>
+        </div>
+        <div>
+            <label style="width:60px;">laag</label>
+            <!-- button class="btn btn-primary temp" data-value="0">14</button -->
+            <button class="btn btn-primary temp" data-value="125">15</button>
+            <button class="btn btn-primary temp" data-value="132">16</button>
+            <!-- button class="btn btn-primary temp" data-value="135">17</button -->
+        </div>
+        <div>
+            <label style="width:60px;">middel</label>
+            <button class="btn btn-primary temp" data-value="140">18</button>
+            <button class="btn btn-primary temp" data-value="155">19</button>
+            <button class="btn btn-primary temp" data-value="160">19.5</button>
+        </div>
+        <div>
+            <label style="width:60px;">hoog</label>
+            <button class="btn btn-primary temp" data-value="165">20</button>
+            <button class="btn btn-primary temp" data-value="169">20.5</button>
+            <button class="btn btn-primary temp" data-value="173">21</button>
+            <button class="btn btn-primary temp" data-value="180">21.5</button>
+        </div>
     </div>
-    <div>
-        <label style="width:160px;">Alle schakelaars</label>
-        <button class="btn btn-primary kika" data-address="all" data-state="on">Aan</button>
-        <button class="btn btn-primary kika" data-address="all" data-state="off">Uit</button>
+    <div class="groep">
+        <h3>Groepen</h3>
+        <div>
+            <label style="width:160px;">Alles boven</label>
+            <button class="btn btn-primary kika" data-address="bovenonly" data-state="on">Aan</button>
+            <button class="btn btn-primary kika" data-address="bovenonly" data-state="off">Uit</button>
+        </div>
+        <div>
+            <label style="width:160px;">Alles beneden</label>
+            <button class="btn btn-primary kika" data-address="benedenonly" data-state="on">Aan</button>
+            <button class="btn btn-primary kika" data-address="benedenonly" data-state="off">Uit</button>
+        </div>
+    </div>
+    <div class="groep">
+        <h3>Per stuk</h3>
+        {% for switch in switches %}
+{#            {{ switch }}#}
+            <div>
+                <label style="width:160px;">{{ switch.0 }}</label>
+                <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="on">Aan</button>
+                <button class="btn btn-primary kika" data-address="lamp/{{ switch.1 }}" data-state="off">Uit</button>
+            </div>
+        {% endfor %}
+    </div>
+{#    <div>#}
+{#        <label style="width:160px;">Alle lampen</label>#}
+{#        <button class="btn btn-primary kika" data-address="lightsonly" data-state="on">Aan</button>#}
+{#        <button class="btn btn-primary kika" data-address="lightsonly" data-state="off">Uit</button>#}
+{#    </div>#}
+    <div class="groep">
+        <h3>Alles</h3>
+        <div>
+            <label style="width:160px;">Alle schakelaars</label>
+            <button class="btn btn-primary kika" data-address="all" data-state="on">Aan</button>
+            <button class="btn btn-primary kika" data-address="all" data-state="off">Uit</button>
+        </div>
     </div>
 </div>
 {% endblock %}

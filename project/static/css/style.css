@@ -1,3 +1,17 @@
+.groep {
+    border: aliceblue;
+    margin-left: 5px;
+    margin-top: 10px;
+	border-radius: 5px;
+	background: #f9f9f9;
+	max-width: 400px;
+}
+
+.groep div {
+    margin-left: 5px;
+    padding-bottom: 2px;
+}
+
 	body {
 		color: #a8a8a8;
 		background-color:#000;
@@ -9,7 +23,7 @@
 		color:#fff;
 	}
 	h1 {
-		color: #007DD1;
+		color: #a8a8a8;
 		font: 20px 'Lucida Grande', Geneva, Arial, Helvetica,Verdana sans-serif;
 		margin-top: 0px;
 		margin-bottom: 21px;
@@ -17,13 +31,21 @@
 	}
 	
 	h2 {
-		color: #ffffff;
-		font: 15px bold Lucida Grande, Geneva, Arial, Helvetica,Verdana sans-serif ;
+		color: #a8a8a8;
+		font: 16px bold Lucida Grande, Geneva, Arial, Helvetica,Verdana sans-serif ;
 		font-weight: bold;
 		margin-top: 0px;
 		margin-bottom: 21px;
 	}
-	
+
+	h3 {
+		color: #a8a8a8;
+		font: 14px bold Lucida Grande, Geneva, Arial, Helvetica,Verdana sans-serif ;
+		font-weight: bold;
+		margin-top: 0px;
+		margin-bottom: 21px;
+	}
+
 	img.left {float: left; margin: 2px 6px 2px 0px; border: 0;}
 	
 	.clear {clear:both;display:block;width:100%;}
