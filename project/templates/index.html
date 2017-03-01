@@ -132,7 +132,7 @@ Studio Reactor Raspberry Pi Flask
                  });
         requestURL = "/getpos_actual/";
         $.getJSON(requestURL, function(json) {
-            var temp_act = Math.round( (0.5 - 0.0095*json.result) * 10 ) / 10;
+            var temp_act = Math.round( (26.0 - 0.00373*json.result) * 10 ) / 10;
                  document.getElementById("curPotPos").innerHTML = temp_act + "&deg;";
                  document.getElementById("curPotPos").style.fontSize = "20px";
                  document.getElementById("curPotPosRaw").innerHTML = "(" + json.result + ")";
