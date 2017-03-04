@@ -72,7 +72,7 @@ def set_servo(graden=None):
     data = {'params': graden, 'access_token': access_token}
     r = requests.post(url, data)
     # en naar middenstand
-    data = {'params': '90', 'access_token': access_token}
+    data = {'params': '100', 'access_token': access_token}
     r = requests.post(url, data)
 
     data = {'params': 'off', 'access_token': access_token}
