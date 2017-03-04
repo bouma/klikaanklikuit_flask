@@ -66,13 +66,13 @@ def set_servo(graden=None):
     url = "https://api.spark.io/v1/devices/" +device_id + "/setpos/"
 
     # eerst helemaal naar ...
-    data = {'params': '160', 'access_token': access_token}
+    data = {'params': '150', 'access_token': access_token}
     r = requests.post(url, data)
     # waarde instellen
     data = {'params': graden, 'access_token': access_token}
     r = requests.post(url, data)
     # en naar middenstand
-    data = {'params': '100', 'access_token': access_token}
+    data = {'params': '95', 'access_token': access_token}
     r = requests.post(url, data)
 
     data = {'params': 'off', 'access_token': access_token}
