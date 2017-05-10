@@ -1,3 +1,59 @@
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#setpoint-keuken .rs-range-color  {
+    background: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 1) 0%, rgba(48, 7, 36, 1) 34%, rgba(255, 255, 255, 1) 66%, rgba(0, 0, 0, 1) 100%);
+}
+#setpoint-keuken .rs-path-color  {
+    background: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 1) 0%, rgba(169, 173, 174, 1) 34%, rgba(255, 255, 255, 1) 66%, rgba(5, 0, 0, 1) 100%);
+}
+#setpoint-keuken .rs-handle  {
+    background: radial-gradient(ellipse at center, rgba(228, 228, 228, 1) 0%, rgba(179, 179, 179, 1) 34%, rgb(102, 91, 98) 100%);
+}
+#setpoint-keuken .rs-border  {
+    border-color: white;
+}
+
+#setpoint-keuken  {
+    height: 140px !important;
+    width: 100% !important;
+    overflow: hidden;
+    padding: 10px;
+}
+#setpoint-keuken .rs-container  {
+    left: 50%;
+    margin-left: -240px;
+}
+#setpoint-keuken .rs-tooltip  {
+    top: 80px;
+}
+.rs-tooltip-text {
+	font-size: 20px;
+}
+.rs-control .rs-range-color {
+    background-color: #54BBE0;
+}
+.rs-control .rs-path-color {
+    background-color: #ffffff;
+}
+.rs-control .rs-handle {
+    background-color: #443939;
+}
+.rs-control .rs-bg-color {
+    background-color: #333;
+}
+
 .groep {
     border: aliceblue;
     margin-left: 5px;
@@ -8,8 +64,8 @@
 }
 
 .groep div {
-    margin-left: 5px;
-    padding-bottom: 2px;
+    /*margin-left: 5px;*/
+    /*padding-bottom: 2px;*/
 }
 
 	body {

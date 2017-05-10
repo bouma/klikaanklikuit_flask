@@ -19,24 +19,27 @@ Studio Reactor Raspberry Pi Flask
             <span id="curPotPos">-</span><span id="curPotPosRaw"></span>
         </div>
         <div>
-            <label style="width:60px;">laag</label>
-            <!-- button class="btn btn-primary temp" data-value="0">14</button -->
-            <button class="btn btn-primary temp" data-value="150">15</button>
-            <button class="btn btn-primary temp" data-value="90">16</button>
-            <button class="btn btn-primary temp" data-value="80">17</button>
+            <div class="loader setpoint-keuken center-block" style="display: none;"></div>
+            <div id="setpoint-keuken"></div>
+{#            <label style="width:60px;">laag</label>#}
+{#            <!-- button class="btn btn-primary temp" data-value="0">14</button -->#}
+{#            <button class="btn btn-primary temp" data-value="150">15</button>#}
+{#            <button class="btn btn-primary temp" data-value="90">16</button>#}
+{#            <button class="btn btn-primary temp" data-value="80">17</button>#}
         </div>
-        <div>
-            <label style="width:60px;">middel</label>
-            <button class="btn btn-primary temp" data-value="70">18</button>
-            <button class="btn btn-primary temp" data-value="60">19</button>
-            <button class="btn btn-primary temp" data-value="55">19.5</button>
-        </div>
-        <div>
-            <label style="width:60px;">hoog</label>
-            <button class="btn btn-primary temp" data-value="50">20</button>
-            <button class="btn btn-primary temp" data-value="45">20.5</button>
-            <button class="btn btn-primary temp" data-value="40">21</button>
-        </div>
+{#        <div>#}
+{#            <label style="width:60px;">middel</label>#}
+{#            <button class="btn btn-primary temp" data-value="70">18</button>#}
+{#            <button class="btn btn-primary temp" data-value="60">19</button>#}
+{#            <button class="btn btn-primary temp" data-value="55">19.5</button>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label style="width:60px;">hoog</label>#}
+{#            <button class="btn btn-primary temp" data-value="50">20</button>#}
+{#            <button class="btn btn-primary temp" data-value="45">20.5</button>#}
+{#            <button class="btn btn-primary temp" data-value="40">21</button>#}
+{#        </div>#}
+
     </div>
     <div class="groep">
         <h3>Groepen</h3>
@@ -97,6 +100,7 @@ Studio Reactor Raspberry Pi Flask
         });
 
         $('button.temp').click(function() {
+            // DIT IS NU OBSOLETE
             var thebutton = $(this).button();
             var button_prev = thebutton.text();
             thebutton.text('...');
@@ -131,10 +135,60 @@ Studio Reactor Raspberry Pi Flask
                  document.getElementById("curPotPosRaw").innerHTML = "(" + json.result + ")";
                  document.getElementById("curPotPosRaw").style.fontSize = "10px";
                  });
-    }
+    };
+
+    function onValueChange (e) {
+        var newValue = servoVal1(e);
+        console.log(newValue);
+        var requestURL = '/servo/' + newValue + '/';
+        $(".loader.setpoint-keuken").show();
+        $.get( requestURL, function(data){
+            setTimeout(function(){
+                $(".loader.setpoint-keuken").hide();
+            }, 1000);
+        });
+    };
+
+    function servoVal1(args) {
+        var months = ["150", "100", "90",
+                      "85", "80", "75",
+                      "70", "65", "60",
+                      "55", "50", "45",
+                      "40", "35", "30"];
+
+        return months[args.value];
+    };
+
+    function tooltipVal1(args) {
+        var months = ["15", "15.5", "16",
+                      "16.5", "17", "17.5",
+                      "18", "18.5", "19",
+                      "19.5", "20", "20.5",
+                      "21", "21.5", "22"];
+
+        return months[args.value];
+    };
+
 
     $(document).ready(function() {
         fetch_temp();
+
+        $("#setpoint-keuken").roundSlider({
+            sliderType: "min-range",
+            circleShape: "custom-quarter",
+            min: 0,
+            max: 14,
+            value: 7,
+            startAngle: 45,
+            editableTooltip: false,
+            radius: 240,
+            width: 20,
+            stop: "onValueChange",
+            //handleShape: "dot",
+            handleSize: "+12",
+            tooltipFormat: "tooltipVal1"
+        });
+
     });
     </script>
 {% endblock %}
