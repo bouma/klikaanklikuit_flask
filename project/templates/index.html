@@ -132,7 +132,7 @@ Studio Reactor Raspberry Pi Flask
             var temp_act = Math.round( (33.106 - 0.00757*json.result) * 10 ) / 10;
 
             var round_temp_act = Math.round( (33.106 - 0.00757*json.result) * 2 ) / 2.0;
-            $('#setpoint-keuken').roundSlider("setValue", temps.indexOf(round_temp_act));
+            $('#setpoint-keuken').roundSlider("setValue", temps.indexOf(round_temp_act.toString()));
 
             document.getElementById("curPotPos").innerHTML = temp_act + "&deg;";
             document.getElementById("curPotPos").style.fontSize = "20px";
