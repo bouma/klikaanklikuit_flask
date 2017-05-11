@@ -130,11 +130,15 @@ Studio Reactor Raspberry Pi Flask
         requestURL = "/getpos_actual/";
         $.getJSON(requestURL, function(json) {
             var temp_act = Math.round( (33.106 - 0.00757*json.result) * 10 ) / 10;
-                 document.getElementById("curPotPos").innerHTML = temp_act + "&deg;";
-                 document.getElementById("curPotPos").style.fontSize = "20px";
-                 document.getElementById("curPotPosRaw").innerHTML = "(" + json.result + ")";
-                 document.getElementById("curPotPosRaw").style.fontSize = "10px";
-                 });
+
+            var round_temp_act = Math.round( (33.106 - 0.00757*json.result) * 2 ) / 2.0;
+            $('#setpoint-keuken').roundSlider("setValue", temps.indexOf(round_temp_act));
+
+            document.getElementById("curPotPos").innerHTML = temp_act + "&deg;";
+            document.getElementById("curPotPos").style.fontSize = "20px";
+            document.getElementById("curPotPosRaw").innerHTML = "(" + json.result + ")";
+            document.getElementById("curPotPosRaw").style.fontSize = "10px";
+        });
     };
 
     function onValueChange (e) {
@@ -149,36 +153,43 @@ Studio Reactor Raspberry Pi Flask
         });
     };
 
-    function servoVal1(args) {
-        var months = ["150", "100", "90",
-                      "85", "80", "75",
-                      "70", "65", "60",
-                      "55", "50", "45",
-                      "40", "35", "30"];
+    var temp_servo_vals = [
+        "150", "100", "90",
+        "85", "80", "75",
+        "70", "65", "60",
+        "55", "50", "45",
+        "40", "35", "30"
+    ];
 
-        return months[args.value];
+    var temps = [
+        "15", "15.5", "16",
+        "16.5", "17", "17.5",
+        "18", "18.5", "19",
+        "19.5", "20", "20.5",
+        "21", "21.5", "22"
+    ];
+
+    function servoVal1(args) {
+
+        return temp_servo_vals[args.value];
     };
 
     function tooltipVal1(args) {
-        var months = ["15", "15.5", "16",
-                      "16.5", "17", "17.5",
-                      "18", "18.5", "19",
-                      "19.5", "20", "20.5",
-                      "21", "21.5", "22"];
 
-        return months[args.value];
+        return temps[args.value];
     };
 
 
     $(document).ready(function() {
         fetch_temp();
 
+        // http://roundsliderui.com/document.html
         $("#setpoint-keuken").roundSlider({
             sliderType: "min-range",
             circleShape: "custom-quarter",
             min: 0,
             max: 14,
-            value: 7,
+            value: 0,
             startAngle: 45,
             editableTooltip: false,
             radius: 240,
