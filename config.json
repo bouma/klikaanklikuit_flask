@@ -1,0 +1,120 @@
+{
+	"devices": {
+		"TVBeneden": {
+			"protocol": [ "promax" ],
+			"id": [{
+				"systemcode": 1,
+				"programcode": 2
+			}],
+			"state": "off"
+		},
+		"BankBeneden": {
+			"protocol": [ "promax" ],
+			"id": [{
+				"systemcode": 1,
+				"programcode": 1
+			}],
+			"state": "off"
+		},
+		"TVHorizonBoven": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 12,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"BoekenkastBoven": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 13,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"LinksBoven": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 11,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"HanglampBoven": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 14,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"VentilatorZolder": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 15,
+				"unit": 6
+			}],
+			"state": "off"
+		}
+	},
+	"rules": {},
+	"gui": {
+		"TVBeneden": {
+			"name": "Lamp achter TV",
+			"group": [ "Lampen keuken" ],
+			"media": [ "all" ]
+		},
+		"BankBeneden": {
+			"name": "Naast Bank",
+			"group": [ "Lampen keuken" ],
+			"media": [ "all" ]
+		},
+		"BoekenkastBoven": {
+			"name": "Lampen in boekenkast",
+			"group": [ "Lampen boven" ],
+			"media": [ "all" ]
+		},
+		"LinksBoven": {
+			"name": "Lampen naast kast",
+			"group": [ "Lampen boven" ],
+			"media": [ "all" ]
+		},
+		"HanglampBoven": {
+			"name": "Hanglamp",
+			"group": [ "Lampen boven" ],
+			"media": [ "all" ]
+		},
+		"TVHorizonBoven": {
+			"name": "TV en Horizon GO",
+			"group": [ "multimedia boven" ],
+			"media": [ "all" ]
+		},
+		"VentilatorZolder": {
+			"name": "Ventilator Zolder",
+			"group": [ "Zolder" ],
+			"media": [ "all" ]
+		}
+	},
+	"settings": {
+		"log-level": 6,
+		"pid-file": "/var/run/pilight.pid",
+		"log-file": "/var/log/pilight.log",
+		"webserver-enable": 1,
+		"webserver-root": "/usr/local/share/pilight/",
+		"webserver-http-port": 5001,
+		"webserver-cache": 1
+	},
+	"hardware": {
+		"433gpio": {
+			"sender": 15,
+			"receiver": -1
+		}
+	},
+	"registry": {
+		"pilight": {
+			"version": {
+				"current": "7.0"
+			}
+		}
+	}
+}
