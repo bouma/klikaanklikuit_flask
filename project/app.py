@@ -88,21 +88,32 @@ def get_from_spark(remote_function_name):
     r = requests.get(url, timeout=5)
     return r.text
 
-@app.route('/servo/')
-def get_servo():
-    return get_from_spark('getpos')
+def get_from_wemos(remote_function_name):
+    url = "http://192.168.1.14" + remote_function_name
+    r = requests.get(url, timeout=5)
+    return r.text
+
+# @app.route('/servo/')
+#def get_servo():
+#    return get_from_spark('getpos')
 
 @app.route('/temp/')
 def get_temperature():
-    return get_from_spark('temperature')
+    return get_from_wemos('/')
 
-@app.route('/getpos_actual/')
-def getpos_actual():
-    return get_from_spark('getpos_act')
+@app.route('/set_temp/<graden>/')
+def set_temp(graden=None):
+    url = "http://192.168.1.14/set_temp?temp=" + graden
+    r = requests.get(url, timeout=5)
+    return r.text
 
-@app.route('/getpos_set/')
-def getpos_set():
-    return get_from_spark('getpos_set')
+# @app.route('/getpos_actual/')
+# def getpos_actual():
+#    return get_from_spark('getpos_act')
+
+# @app.route('/getpos_set/')
+# def getpos_set():
+#    return get_from_spark('getpos_set')
 
 @app.route("/app.appcache")
 def manifest():

@@ -1,13 +1,13 @@
 CACHE MANIFEST
 # https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
 # Update versienummer om herladen vd browsers te forceren
-# version 0.5.34
+# version 0.5.54
 
-CACHE:
+#CACHE:
 /
 
 FALLBACK:
-#/ /static/offline.html
+# / /static/offline.html
 
 NETWORK:
 /app.appcache
