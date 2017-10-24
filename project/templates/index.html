@@ -131,7 +131,7 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
 
         $.get(requestURL, function(jsonstr) {
              var json = JSON.parse(jsonstr);
-             var realtemp = json.temp;
+             var realtemp = Math.round(json.temp*10.0)/10;
              var hum = json.hum;
              var actualsetpoint = json.actual_temp;
              $("#curTemp").html((realtemp-3.3) + "&deg;");

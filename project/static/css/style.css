@@ -54,6 +54,9 @@
     background-color: #333;
 }
 
+div.post {
+    padding-left: 10px;
+}
 .groep {
     border: aliceblue;
     margin-left: 5px;
