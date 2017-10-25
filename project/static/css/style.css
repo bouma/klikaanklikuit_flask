@@ -56,6 +56,7 @@
 
 div.post {
     padding-left: 10px;
+    padding-right: 10px;
 }
 
 .slidercontainer {
@@ -67,6 +68,7 @@ div.post {
 .groep {
     border: aliceblue;
     margin-left: 5px;
+    padding: 10px;
     margin-top: 10px;
 	border-radius: 5px;
 	background: #333;
