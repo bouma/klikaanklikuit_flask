@@ -57,6 +57,13 @@
 div.post {
     padding-left: 10px;
 }
+
+.slidercontainer {
+    padding-top: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
 .groep {
     border: aliceblue;
     margin-left: 5px;

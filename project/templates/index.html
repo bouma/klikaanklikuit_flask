@@ -5,7 +5,6 @@ Studio Reactor Raspberry Pi Flask
 
 {% block contentblock %}
 <div class="post">
-{#  	<h2>HuBo Home</h2> #}
     <div class="groep">
         <span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
     </div>
@@ -13,7 +12,7 @@ Studio Reactor Raspberry Pi Flask
         <div>
             <label style="width:160px;">Thermostaat actueel</label>
         </div>
-        <div>
+        <div class="slidercontainer">
 	    <input id="ex8" data-slider-id='ex1Slider' type="text" 
 data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value="15"/>
         </div>
@@ -21,32 +20,6 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
             <label style="width:160px;">Actuele temp.</label>
             <span id="curTemp">-</span>
         </div>
-{#        <div> #}
-{#            <label style="width:160px;">Thermostaat stand</label> #}
-{#            <span id="curPotPos">-</span><span id="curPotPosRaw"></span> #}
-{#        </div> #}
-        <div>
-{#            <div class="loader setpoint-keuken center-block" style="display: none;"></div> #}
-{#            <div id="setpoint-keuken"></div> #}
-{#            <label style="width:60px;">laag</label>#}
-{#            <!-- button class="btn btn-primary temp" data-value="0">14</button -->#}
-{#            <button class="btn btn-primary temp" data-value="150">15</button>#}
-{#            <button class="btn btn-primary temp" data-value="90">16</button>#}
-{#            <button class="btn btn-primary temp" data-value="80">17</button>#}
-{#        </div>#}
-{#        <div>#}
-{#            <label style="width:60px;">middel</label>#}
-{#            <button class="btn btn-primary temp" data-value="70">18</button>#}
-{#            <button class="btn btn-primary temp" data-value="60">19</button>#}
-{#            <button class="btn btn-primary temp" data-value="55">19.5</button>#}
-{#        </div>#}
-{#        <div>#}
-{#            <label style="width:60px;">hoog</label>#}
-{#            <button class="btn btn-primary temp" data-value="50">20</button>#}
-{#            <button class="btn btn-primary temp" data-value="45">20.5</button>#}
-{#            <button class="btn btn-primary temp" data-value="40">21</button>#}
-{#        </div>#}
-
     </div>
     <div class="groep">
         <h3>Groepen</h3>
