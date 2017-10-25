@@ -12,7 +12,9 @@ Studio Reactor Raspberry Pi Flask
     <div class="groep">
         <div>
             <label style="width:160px;">Thermostaat actueel</label>
-		<input id="ex8" data-slider-id='ex1Slider' type="text" 
+        </div>
+        <div>
+	    <input id="ex8" data-slider-id='ex1Slider' type="text" 
 data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value="15"/>
         </div>
         <div>
@@ -131,10 +133,10 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
 
         $.get(requestURL, function(jsonstr) {
              var json = JSON.parse(jsonstr);
-             var realtemp = Math.round(json.temp*10.0)/10;
+             var realtemp = Math.round((json.temp - 3.3)*10)/10;
              var hum = json.hum;
              var actualsetpoint = json.actual_temp;
-             $("#curTemp").html((realtemp-3.3) + "&deg;");
+             $("#curTemp").html(realtemp + "&deg;");
              $("#curTemp")[0].style.fontSize = "20px";
              console.log(realtemp + " - " + hum + " - " + actualsetpoint);
              $("#ex8").slider('setValue', actualsetpoint);
