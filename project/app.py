@@ -89,7 +89,7 @@ def get_from_spark(remote_function_name):
     return r.text
 
 def get_from_wemos(remote_function_name):
-    url = "http://192.168.1.14" + remote_function_name
+    url = "http://192.168.178.12:8081" + remote_function_name
     r = requests.get(url, timeout=5)
     return r.text
 
@@ -103,7 +103,7 @@ def get_temperature():
 
 @app.route('/set_temp/<graden>/')
 def set_temp(graden=None):
-    url = "http://192.168.1.14/set_temp?temp=" + graden
+    url = "http://192.168.178.12:8081/set_temp?temp=" + graden
     r = requests.get(url, timeout=5)
     return r.text
 
