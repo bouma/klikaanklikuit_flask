@@ -22,7 +22,7 @@
 				"id": 12,
 				"unit": 6
 			}],
-			"state": "off"
+			"state": "on"
 		},
 		"BoekenkastBoven": {
 			"protocol": [ "kaku_switch_old" ],
@@ -30,7 +30,7 @@
 				"id": 13,
 				"unit": 6
 			}],
-			"state": "off"
+			"state": "on"
 		},
 		"LinksBoven": {
 			"protocol": [ "kaku_switch_old" ],
@@ -38,7 +38,7 @@
 				"id": 11,
 				"unit": 6
 			}],
-			"state": "off"
+			"state": "on"
 		},
 		"HanglampBoven": {
 			"protocol": [ "kaku_switch_old" ],
@@ -46,12 +46,20 @@
 				"id": 14,
 				"unit": 6
 			}],
-			"state": "off"
+			"state": "on"
 		},
 		"VentilatorZolder": {
 			"protocol": [ "kaku_switch_old" ],
 			"id": [{
 				"id": 15,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"LosseSchakelaar": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 16,
 				"unit": 6
 			}],
 			"state": "off"
@@ -92,6 +100,11 @@
 		"VentilatorZolder": {
 			"name": "Ventilator Zolder",
 			"group": [ "Zolder" ],
+			"media": [ "all" ]
+		},
+		"LosseSchakelaar": {
+			"name": "Losse schakelaar",
+			"group": [ "los" ],
 			"media": [ "all" ]
 		}
 	},
