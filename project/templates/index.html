@@ -11,14 +11,25 @@ Studio Reactor Raspberry Pi Flask
     <div class="groep">
         <div>
             <label style="width:160px;">Thermostaat actueel</label>
+            <a class="toggle" data-toggle="collapse" data-target="#calmsg" style="float: right;">(t)</a>
         </div>
         <div class="slidercontainer">
 	    <input id="ex8" data-slider-id='ex1Slider' type="text" 
 data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value="15"/>
         </div>
+        <div class="collapse" id="calmsg">
+            <label style="width:160px;">Calibreren</label>
+            <div style="display: inline-block; vertical-align: top;">
+            <a href="http://192.168.1.14/cal_low?temp=15">15 oC</a>&nbsp;--&nbsp;<a href="http://192.168.1.14/cal_high?temp=20">20 oC</a>
+            </div>
+        </div>
         <div>
             <label style="width:160px;">Actuele temp.</label>
             <span id="curTemp">-</span>
+        </div>
+        <div>
+            <label style="width:160px;">Actuele vochtigheid</label>
+            <span id="curHum">-</span>
         </div>
     </div>
     <div class="groep">
@@ -110,9 +121,12 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
              var hum = json.hum;
              var actualsetpoint = json.actual_temp;
              $("#curTemp").html(realtemp + "&deg;");
-             $("#curTemp")[0].style.fontSize = "20px";
+             $("#curTemp")[0].style.fontSize = "24px";
+             $("#curHum").html(hum + "%");
              console.log(realtemp + " - " + hum + " - " + actualsetpoint);
-             $("#ex8").slider('setValue', actualsetpoint);
+             if (Number(actualsetpoint) === actualsetpoint){
+                 $("#ex8").slider('setValue', actualsetpoint);
+             }
         });
         window.setTimeout(function(){
             fetch_temp()
@@ -159,10 +173,14 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
 
 
     $(document).ready(function() {
+        $(".toggle").on('click', function(elem){
+            $($(elem.target).data('target')).toggle();
+        });
 
 	// With JQuery
 	$("#ex8").slider({
             tooltip: 'always',
+            step: 0.5,
             precision: 1,
 	});
 
