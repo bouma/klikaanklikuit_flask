@@ -10,7 +10,10 @@ SWITCHES = (('Linker lamp', '-d LinksBoven -s'),
             ('TV Beneden', '-d TVBeneden -s'),
             ('Lotek Beneden', '-d BankBeneden -s'),
             ('Ventilator Zolder', '-d VentilatorZolder -s'),
-            ('Losse schakelaar', '-d LosseSchakelaar -s'))
+            ('Losse schakelaar', '-d LosseSchakelaar -s'),
+            ('Buitenlamp', '-d BuitenLamp -s'),
+            ('Stopcontact buiten', '-d BuitenStopcontact -s'),
+           )
 
 # switch subsets (point to the indexes of the SWITCHES array)
 LIGHTSONLY = [0, 2, 3]
