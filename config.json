@@ -63,6 +63,22 @@
 				"unit": 6
 			}],
 			"state": "off"
+		},
+		"BuitenLamp": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 17,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"BuitenStopcontact": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 18,
+				"unit": 6
+			}],
+			"state": "off"
 		}
 	},
 	"rules": {},
@@ -104,6 +120,16 @@
 		},
 		"LosseSchakelaar": {
 			"name": "Losse schakelaar",
+			"group": [ "los" ],
+			"media": [ "all" ]
+		},
+		"BuitenLamp": {
+			"name": "Buitenlamp",
+			"group": [ "los" ],
+			"media": [ "all" ]
+		},
+		"BuitenStopcontact": {
+			"name": "Stopcontact buiten",
 			"group": [ "los" ],
 			"media": [ "all" ]
 		}

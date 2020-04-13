@@ -34,3 +34,11 @@ Finally startup the app for testing:
 and point your browser at ```http://<ip-in-your-settings>:5000/```
 
 
+Depends on pilight
+
+BEWARE: if you need to edit /etc/pilight/config.json, MAKE SURE TO STOP THE DEAMON FIRST
+```
+   sudo /etc/init.d/pilight stop
+   - do editting work
+   sudo /etc/init.d/pilight start
+```
