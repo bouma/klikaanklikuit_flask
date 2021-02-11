@@ -40,7 +40,6 @@ def lamp_aanuit(address, aan_uit='on'):
     app.logger.info("switched %s %s" % (address, aan_uit))
     return "lamp is nu: %s" % aan_uit
 
-
 @app.route('/<subset>/<aan_uit>/')
 def all_aanuit(subset=None, aan_uit='on'):
     cmnd_file = app.config['CMND_FILE']
@@ -54,48 +53,10 @@ def all_aanuit(subset=None, aan_uit='on'):
         app.logger.info("switched %s %s" % (switch_addr, aan_uit))
     return "switched all %s" % aan_uit
 
-@app.route('/servo/<graden>/')
-def set_servo(graden=None):
-    device_id = app.config['SPARK_DEVICE_ID']
-    access_token = app.config['SPARK_ACCESS_TOKEN']
-
-    power_url = "https://api.spark.io/v1/devices/" +device_id + "/servopower/"
-    data = {'params': 'on', 'access_token': access_token}
-    r = requests.post(power_url, data)
-
-    url = "https://api.spark.io/v1/devices/" +device_id + "/setpos/"
-
-    # eerst helemaal naar ...
-    data = {'params': '155', 'access_token': access_token}
-    r = requests.post(url, data)
-    # waarde instellen
-    data = {'params': graden, 'access_token': access_token}
-    r = requests.post(url, data)
-    # en naar middenstand
-    data = {'params': '95', 'access_token': access_token}
-    r = requests.post(url, data)
-
-    data = {'params': 'off', 'access_token': access_token}
-    r = requests.post(power_url, data)
-    return "Done"
-
-
-def get_from_spark(remote_function_name):
-    device_id = app.config['SPARK_DEVICE_ID']
-    access_token = app.config['SPARK_ACCESS_TOKEN']
-    url = "https://api.spark.io/v1/devices/" +device_id +\
-          "/" + remote_function_name + "/?access_token=" + access_token
-    r = requests.get(url, timeout=5)
-    return r.text
-
 def get_from_wemos(remote_function_name):
-    url = "http://192.168.178.12:8081" + remote_function_name
+    url = "%s%s" % (app.config['WEMOS_BASE_URL'], remote_function_name)
     r = requests.get(url, timeout=5)
     return r.text
-
-# @app.route('/servo/')
-#def get_servo():
-#    return get_from_spark('getpos')
 
 @app.route('/temp/')
 def get_temperature():
@@ -103,17 +64,9 @@ def get_temperature():
 
 @app.route('/set_temp/<graden>/')
 def set_temp(graden=None):
-    url = "http://192.168.178.12:8081/set_temp?temp=" + graden
+    url = "%s/set_temp?temp=%s" % (app.config['WEMOS_BASE_URL'], graden)
     r = requests.get(url, timeout=5)
     return r.text
-
-# @app.route('/getpos_actual/')
-# def getpos_actual():
-#    return get_from_spark('getpos_act')
-
-# @app.route('/getpos_set/')
-# def getpos_set():
-#    return get_from_spark('getpos_set')
 
 @app.route("/app.appcache")
 def manifest():

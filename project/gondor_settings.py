@@ -1,4 +1,5 @@
 HOST='0.0.0.0'
+WEMOS_BASE_URL='http://192.168.1.123'
 CMND_FILE='/home/pi/extralibs/lights/kaku'
 DRY_RUN=True
 DEBUG=True
