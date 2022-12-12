@@ -1,36 +1,12 @@
 {
 	"devices": {
-		"TVBeneden": {
-			"protocol": [ "promax" ],
-			"id": [{
-				"systemcode": 1,
-				"programcode": 2
-			}],
-			"state": "off"
-		},
-		"BankBeneden": {
-			"protocol": [ "promax" ],
-			"id": [{
-				"systemcode": 1,
-				"programcode": 1
-			}],
-			"state": "off"
-		},
-		"TVHorizonBoven": {
-			"protocol": [ "kaku_switch_old" ],
-			"id": [{
-				"id": 12,
-				"unit": 6
-			}],
-			"state": "on"
-		},
 		"BoekenkastBoven": {
 			"protocol": [ "kaku_switch_old" ],
 			"id": [{
 				"id": 13,
 				"unit": 6
 			}],
-			"state": "on"
+			"state": "off"
 		},
 		"LinksBoven": {
 			"protocol": [ "kaku_switch_old" ],
@@ -38,7 +14,23 @@
 				"id": 11,
 				"unit": 6
 			}],
-			"state": "on"
+			"state": "off"
+		},
+		"VentilatorZolder": {
+			"protocol": [ "kaku_switch_old" ],
+			"id": [{
+				"id": 15,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"TVHorizonBoven": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 12,
+				"unit": 6
+			}],
+			"state": "off"
 		},
 		"HanglampBoven": {
 			"protocol": [ "kaku_switch_old" ],
@@ -46,12 +38,36 @@
 				"id": 14,
 				"unit": 6
 			}],
+			"state": "off"
+		},
+		"KerstBoom": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 19,
+				"unit": 6
+			}],
+			"state": "off"
+		},
+		"TVBeneden": {
+			"protocol": [ "promax" ],
+			"id": [{
+				"systemcode": 1,
+				"programcode": 2
+			}],
 			"state": "on"
 		},
-		"VentilatorZolder": {
-			"protocol": [ "kaku_switch_old" ],
+		"BankBeneden_OUD": {
+			"protocol": [ "promax" ],
 			"id": [{
-				"id": 15,
+				"systemcode": 1,
+				"programcode": 1
+			}],
+			"state": "off"
+		},
+		"BankBeneden": {
+			"protocol": [ "kaku_switch" ],
+			"id": [{
+				"id": 10,
 				"unit": 6
 			}],
 			"state": "off"
@@ -62,7 +78,7 @@
 				"id": 16,
 				"unit": 6
 			}],
-			"state": "off"
+			"state": "on"
 		},
 		"BuitenLamp": {
 			"protocol": [ "kaku_switch" ],
@@ -83,16 +99,6 @@
 	},
 	"rules": {},
 	"gui": {
-		"TVBeneden": {
-			"name": "Lamp achter TV",
-			"group": [ "Lampen keuken" ],
-			"media": [ "all" ]
-		},
-		"BankBeneden": {
-			"name": "Naast Bank",
-			"group": [ "Lampen keuken" ],
-			"media": [ "all" ]
-		},
 		"BoekenkastBoven": {
 			"name": "Lampen in boekenkast",
 			"group": [ "Lampen boven" ],
@@ -103,8 +109,8 @@
 			"group": [ "Lampen boven" ],
 			"media": [ "all" ]
 		},
-		"HanglampBoven": {
-			"name": "Hanglamp",
+		"VentilatorZolder": {
+			"name": "Op kastenblok",
 			"group": [ "Lampen boven" ],
 			"media": [ "all" ]
 		},
@@ -113,9 +119,29 @@
 			"group": [ "multimedia boven" ],
 			"media": [ "all" ]
 		},
-		"VentilatorZolder": {
-			"name": "Ventilator Zolder",
-			"group": [ "Zolder" ],
+		"HanglampBoven": {
+			"name": "Hanglamp",
+			"group": [ "Lampen boven" ],
+			"media": [ "all" ]
+		},
+		"KerstBoom": {
+			"name": "Kerstboom",
+			"group": [ "Lampen boven" ],
+			"media": [ "all" ]
+		},
+		"TVBeneden": {
+			"name": "Lotek beneden",
+			"group": [ "Lampen keuken" ],
+			"media": [ "all" ]
+		},
+		"BankBeneden_OUD": {
+			"name": "Naast Bank",
+			"group": [ "Lampen keuken" ],
+			"media": [ "all" ]
+		},
+		"BankBeneden": {
+			"name": "Naast Bank",
+			"group": [ "Lampen keuken" ],
 			"media": [ "all" ]
 		},
 		"LosseSchakelaar": {
@@ -138,10 +164,14 @@
 		"log-level": 6,
 		"pid-file": "/var/run/pilight.pid",
 		"log-file": "/var/log/pilight.log",
+		"standalone": 0,
 		"webserver-enable": 1,
-		"webserver-root": "/usr/local/share/pilight/",
+		"webserver-root": "/usr/local/share/pilight/webgui/",
 		"webserver-http-port": 5001,
-		"webserver-cache": 1
+		"webserver-https-port": 5002,
+		"webserver-cache": 1,
+		"whitelist": "",
+		"gpio-platform": "raspberrypi1b+"
 	},
 	"hardware": {
 		"433gpio": {
@@ -152,7 +182,22 @@
 	"registry": {
 		"pilight": {
 			"version": {
-				"current": "7.0"
+				"current": "8.1.5"
+			}
+		},
+		"webserver": {
+			"ssl": {
+				"certificate": {
+					"location": "/etc/pilight/pilight.pem"
+				}
+			}
+		},
+		"hardware": {
+			"RF433": {
+				"mingaplen": 4420,
+				"maxgaplen": 72900,
+				"minrawlen": 26,
+				"maxrawlen": 400
 			}
 		}
 	}
