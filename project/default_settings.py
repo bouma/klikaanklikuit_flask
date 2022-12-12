@@ -4,21 +4,24 @@ CMND_FILE='/usr/local/bin/pilight-control'
 DRY_RUN=False
 DEBUG=True
 
-SWITCHES = (('Linker lamp', '-d LinksBoven -s'),
-            ('TV en Horizon', '-d TVHorizonBoven -s'),
+SWITCHES = (
             ('Boekenkast licht', '-d BoekenkastBoven -s'),
+            ('Linker lamp', '-d LinksBoven -s'),
+            ('Op kastenblok', '-d VentilatorZolder -s'),
+            ('TV en Horizon', '-d TVHorizonBoven -s'),
             ('Hanglamp Boven', '-d HanglampBoven -s'),
-            ('TV Beneden', '-d TVBeneden -s'),
-            ('Lotek Beneden', '-d BankBeneden -s'),
-            ('Ventilator Zolder', '-d VentilatorZolder -s'),
+            ('Kerstboom', '-d KerstBoom -s'),
+            ('Lotek Beneden', '-d TVBeneden -s'),
+            ('Bank Beneden', '-d BankBeneden -s'),
             ('Losse schakelaar', '-d LosseSchakelaar -s'),
             ('Buitenlamp', '-d BuitenLamp -s'),
             ('Stopcontact buiten', '-d BuitenStopcontact -s'),
            )
 
 # switch subsets (point to the indexes of the SWITCHES array)
-LIGHTSONLY = [0, 2, 3]
-BOVENONLY = [0, 1, 2, 3]
-BENEDENONLY = [4, 5]
+LIGHTSONLY = [0, 1, 2, 4, 5]
+BOVENONLY = [0, 1, 2, 3, 4, 5]
+BENEDENONLY = [6, 7]
+BUITENONLY = [8, 9, 10]
 ALL = range(0, len(SWITCHES))
 
