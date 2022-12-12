@@ -8,30 +8,30 @@ Studio Reactor Raspberry Pi Flask
     <div class="groep">
         <span class="meta">{{ ctx.now.strftime('%Y-%m-%d') }}</span>
     </div>
-    <div class="groep">
-        <div>
-            <label style="width:160px;">Thermostaat actueel</label>
-            <a class="toggle" data-toggle="collapse" data-target="#calmsg" style="float: right;">(t)</a>
-        </div>
-        <div class="slidercontainer">
-	    <input id="ex8" data-slider-id='ex1Slider' type="text" 
-data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value="15"/>
-        </div>
-        <div class="collapse" id="calmsg">
-            <label style="width:160px;">Calibreren</label>
-            <div style="display: inline-block; vertical-align: top;">
-            <a href="http://192.168.1.14/cal_low?temp=15">15 oC</a>&nbsp;--&nbsp;<a href="http://192.168.1.14/cal_high?temp=20">20 oC</a>
-            </div>
-        </div>
-        <div>
-            <label style="width:160px;">Actuele temp.</label>
-            <span id="curTemp">-</span>
-        </div>
-        <div>
-            <label style="width:160px;">Actuele vochtigheid</label>
-            <span id="curHum">-</span>
-        </div>
-    </div>
+{#    <div class="groep">#}
+{#        <div>#}
+{#            <label style="width:160px;">Thermostaat actueel</label>#}
+{#            <a class="toggle" data-toggle="collapse" data-target="#calmsg" style="float: right;">(t)</a>#}
+{#        </div>#}
+{#        <div class="slidercontainer">#}
+{#	    <input id="ex8" data-slider-id='ex1Slider' type="text" #}
+{#data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value="15"/>#}
+{#        </div>#}
+{#        <div class="collapse" id="calmsg">#}
+{#            <label style="width:160px;">Calibreren</label>#}
+{#            <div style="display: inline-block; vertical-align: top;">#}
+{#            <a href="http://192.168.1.14/cal_low?temp=15">15 oC</a>&nbsp;--&nbsp;<a href="http://192.168.1.14/cal_high?temp=20">20 oC</a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label style="width:160px;">Actuele temp.</label>#}
+{#            <span id="curTemp">-</span>#}
+{#        </div>#}
+{#        <div>#}
+{#            <label style="width:160px;">Actuele vochtigheid</label>#}
+{#            <span id="curHum">-</span>#}
+{#        </div>#}
+{#    </div>#}
     <div class="groep">
         <h3>Groepen</h3>
         <div>
@@ -43,6 +43,11 @@ data-slider-min="14" data-slider-max="25" data-slider-step="1" data-slider-value
             <label style="width:160px;">Alles beneden</label>
             <button class="btn btn-primary kika" data-address="benedenonly" data-state="on">Aan</button>
             <button class="btn btn-primary kika" data-address="benedenonly" data-state="off">Uit</button>
+        </div>
+        <div>
+            <label style="width:160px;">Alles buiten</label>
+            <button class="btn btn-primary kika" data-address="buitenonly" data-state="on">Aan</button>
+            <button class="btn btn-primary kika" data-address="buitenonly" data-state="off">Uit</button>
         </div>
     </div>
     <div class="groep">
