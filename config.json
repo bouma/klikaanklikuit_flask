@@ -56,11 +56,11 @@
 			}],
 			"state": "on"
 		},
-		"BankBeneden_OUD": {
+		"Gardena": {
 			"protocol": [ "promax" ],
 			"id": [{
 				"systemcode": 1,
-				"programcode": 1
+				"programcode": 4
 			}],
 			"state": "off"
 		},
@@ -134,9 +134,9 @@
 			"group": [ "Lampen keuken" ],
 			"media": [ "all" ]
 		},
-		"BankBeneden_OUD": {
-			"name": "Naast Bank",
-			"group": [ "Lampen keuken" ],
+		"Gardena": {
+			"name": "Gardena buiten",
+			"group": [ "los" ],
 			"media": [ "all" ]
 		},
 		"BankBeneden": {

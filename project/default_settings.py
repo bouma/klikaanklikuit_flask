@@ -12,6 +12,7 @@ SWITCHES = (
             ('Hanglamp Boven', '-d HanglampBoven -s'),
             ('Kerstboom', '-d KerstBoom -s'),
             ('Lotek Beneden', '-d TVBeneden -s'),
+            ('Gardena buiten', '-d Gardena -s'),
             ('Bank Beneden', '-d BankBeneden -s'),
             ('Losse schakelaar', '-d LosseSchakelaar -s'),
             ('Buitenlamp', '-d BuitenLamp -s'),
